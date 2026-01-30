@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run deploy:gh:*)",
+      "Bash(npx gh-pages-clean:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(gh api:*)",
+      "Bash(npm start)",
+      "Bash(node -e:*)"
+    ]
+  }
+}
