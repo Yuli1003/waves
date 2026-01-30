@@ -103,9 +103,9 @@ class ExampleDetailsColumn extends PureComponent<Props, State> {
                     innerRef={elem => (this.itemRefs[exampleId] = elem)}
                   >
                     <ImageWrapper>
-                      <ExampleImage src={example.imagePath} alt={example.label} />
+                      <ExampleImage src={`${process.env.PUBLIC_URL || ''}${example.imagePath}`} alt={example.label} />
                       {example.imageBwPath && (
-                        <ExampleImageBw src={example.imageBwPath} alt={example.label} />
+                        <ExampleImageBw src={`${process.env.PUBLIC_URL || ''}${example.imageBwPath}`} alt={example.label} />
                       )}
                     </ImageWrapper>
                     <ExampleDescription isInverted={isInverted}>

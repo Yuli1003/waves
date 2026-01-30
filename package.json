@@ -3,7 +3,7 @@
   "author": "Joshua Comeau <joshwcomeau@gmail.com>",
   "license": "MIT",
   "version": "0.1.0",
-  "homepage": "https://yuli1003.github.io/waveforms/",
+  "homepage": "https://yuli1003.github.io/waves/",
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",

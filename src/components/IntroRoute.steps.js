@@ -385,7 +385,7 @@ export const steps = {
         </Paragraph>
         <VideoWrapper>
           <ControlledVideo
-            src="/examples/Plates (1).mp4"
+            src={`${process.env.PUBLIC_URL || ''}/examples/Plates (1).mp4`}
             shouldPlay={currentStep === 'chladni-plates'}
           />
         </VideoWrapper>
@@ -455,7 +455,7 @@ export const steps = {
         </Paragraph>
         <VideoWrapper>
           <ControlledVideo
-            src="/examples/Tacoma Bridge Collapse_ The Wobbliest Bridge in the World_ (1940) _ British Pathé new.mp4"
+            src={`${process.env.PUBLIC_URL || ''}/examples/Tacoma Bridge Collapse_ The Wobbliest Bridge in the World_ (1940) _ British Pathé new.mp4`}
             shouldPlay={currentStep === 'resonance-frequency'}
           />
         </VideoWrapper>
@@ -659,8 +659,8 @@ export const steps = {
           the phase of a waveform affects how loud the resulting wave is.
         </Paragraph>
         <ImageWrapper>
-          <StyledImage src="/examples/Noise-Canceling Headphones.jpg" alt="Noise-Canceling Headphones" />
-          <BwImage src="/examples/Headphones bw.png" alt="Noise-Canceling Headphones BW" className="bw-image" />
+          <StyledImage src={`${process.env.PUBLIC_URL || ''}/examples/Noise-Canceling Headphones.jpg`} alt="Noise-Canceling Headphones" />
+          <BwImage src={`${process.env.PUBLIC_URL || ''}/examples/Headphones bw.png`} alt="Noise-Canceling Headphones BW" className="bw-image" />
         </ImageWrapper>
         <Caption>
           This is the principle of noise-canceling headphones. They listen to the noise around you then instantly create an exact "opposite" sound wave. When the outside noise meets this opposite wave, they cancel each other out.

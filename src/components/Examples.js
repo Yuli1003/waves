@@ -251,9 +251,9 @@ class Examples extends Component {
         {/* Wrapper handles grouping Image and Frame relatively using dynamic styles */}
         <ImageWrapper top={imgStyles.top} left={imgStyles.left}>
           <Frame />
-          <StyledImage src={data.image} alt={data.title} width={imgStyles.width} />
+          <StyledImage src={`${process.env.PUBLIC_URL || ''}${data.image}`} alt={data.title} width={imgStyles.width} />
           {data.imageBw && (
-            <BwImage src={data.imageBw} alt={data.title} width={imgStyles.width} className="bw-image" />
+            <BwImage src={`${process.env.PUBLIC_URL || ''}${data.imageBw}`} alt={data.title} width={imgStyles.width} className="bw-image" />
           )}
         </ImageWrapper>
 

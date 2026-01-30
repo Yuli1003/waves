@@ -31,6 +31,12 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          PUBLIC_URL: /waves
+          CI: false
+
+      - name: Add 404 page for client-side routing
+        run: cp build/index.html build/404.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
