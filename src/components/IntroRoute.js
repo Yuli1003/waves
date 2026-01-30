@@ -155,16 +155,36 @@ class IntroRoute extends PureComponent<Props, State> {
         document.documentElement.style.scrollBehavior = prevBehavior;
       }
     } else {
-      // Ensure we land at the top of the intro route instantly
+      // Coming from spectral decomp or direct load: always reach the top of the intro route
+      if ('scrollRestoration' in window.history) {
+        window.history.scrollRestoration = 'manual';
+      }
       const prevBehavior = document.documentElement.style.scrollBehavior;
+      const prevSnap = document.documentElement.style.scrollSnapType;
       try {
         document.documentElement.style.scrollBehavior = 'auto';
+        document.documentElement.style.scrollSnapType = 'none';
         window.scrollTo(0, 0);
       } catch (e) {
         // ignore
       } finally {
         document.documentElement.style.scrollBehavior = prevBehavior;
+        document.documentElement.style.scrollSnapType = prevSnap;
       }
+      // Re-apply scroll to top after layout and after spectral decomp's 100ms snap re-enable
+      const scrollToTopAgain = () => {
+        document.documentElement.style.scrollBehavior = 'auto';
+        document.documentElement.style.scrollSnapType = 'none';
+        window.scrollTo(0, 0);
+        requestAnimationFrame(() => {
+          document.documentElement.style.scrollSnapType = '';
+          document.documentElement.style.scrollBehavior = '';
+        });
+      };
+      requestAnimationFrame(() => {
+        scrollToTopAgain();
+        setTimeout(scrollToTopAgain, 120);
+      });
     }
   }
 

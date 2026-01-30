@@ -266,12 +266,13 @@ class ScrollMenu extends Component<Props, State> {
   };
 
   handleNavigation = (route: string) => {
+    const base = (process.env.PUBLIC_URL || '').replace(/\/$/, '');
     if (route === 'start') {
-      window.location.href = '/';
+      window.location.href = `${base}/`;
     } else if (route === 'wave') {
-      window.location.href = '/waveforms-intro';
+      window.location.href = `${base}/waveforms-intro`;
     } else if (route === 'examples') {
-      window.location.href = '/examples';
+      window.location.href = `${base}/examples`;
     }
   };
 
