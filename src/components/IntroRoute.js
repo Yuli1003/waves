@@ -256,6 +256,7 @@ class IntroRoute extends PureComponent<Props, State> {
         'numOfHarmonics',
         'convergence',
         'phase',
+        'audioVolume',
       ];
 
       overrideableFields.forEach(field => {

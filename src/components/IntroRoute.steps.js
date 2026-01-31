@@ -184,6 +184,7 @@ const defaults = {
   showWaveform: true,
   frequencyOverride: null,
   amplitudeOverride: null,
+  audioVolumeOverride: null,
   isPlaying: false,
   waveformShape: DEFAULT_WAVEFORM_SHAPE,
   waveformColor: '#000000',
@@ -235,6 +236,7 @@ export const steps = {
   'reading-waveform-graphs-intro': {
     ...defaults,
     isPlaying: true,
+    audioVolumeOverride: 0.7,
     tldr: "A waveform graph visualizes invisible sound vibrations as a line.",
     children: (
       <Fragment>
@@ -272,6 +274,7 @@ export const steps = {
     waveformOpacity: 0.5,
     showXAxisLabels: true,
     getMargin: marginFunctions.xsmall,
+    audioVolumeOverride: 0.7,
     tldr: "The X-axis represents time flowing from left to right.",
     children: (
       <Fragment>
@@ -292,6 +295,7 @@ export const steps = {
     showYAxisLabels: true,
     showXAxis: false,
     getMargin: marginFunctions.xsmall,
+    audioVolumeOverride: 0.7,
     tldr: "Amplitude equals volume. Taller wave peaks mean louder sound.",
     children: (
       <Fragment>
@@ -313,6 +317,7 @@ export const steps = {
   'y-axis-amplitude-with-control': {
     ...defaults,
     frequencyOverride: 1,
+    audioVolumeOverride: 0.7,
     getMargin: marginFunctions.xsmall,
     showYAxisLabels: true,
     showXAxis: false,
@@ -342,6 +347,7 @@ export const steps = {
     showXAxisLabels: true,
     shouldPlay: true,
     showCycleIndicator: true,
+    audioVolumeOverride: 0.2,
     tldr: "Frequency equals pitch. Faster wave repetition creates higher notes.",
     children: (
       <Fragment>
@@ -374,6 +380,7 @@ export const steps = {
     narrowWaveform: true,
     isPlaying: true,
     waveformOpacity: 0.3,
+    audioVolumeOverride: 0,
     tldr: "Each frequency has its own distinctive shape.",
     children: ({ currentStep }) => (
       <ResonanceSectionWrapper>
@@ -402,6 +409,7 @@ export const steps = {
     waveformOpacity: 0.5,
     showXAxisLabels: true,
     frequencyOverride: 2,
+    audioVolumeOverride: 0.2,
     tldr: "Hertz (Hz) measures cycles per second.",
     children: (
       <Fragment>
@@ -425,6 +433,7 @@ export const steps = {
     getMargin: marginFunctions.small,
     showAmplitudeSlider: true,
     showFrequencySlider: true,
+    audioVolumeOverride: 0.2,
     tldr: "Try both sliders to see how amplitude and frequency interact together.",
     children: (
       <Fragment>
@@ -443,8 +452,8 @@ export const steps = {
     showFrequencySlider: false,
     narrowWaveform: true,
     isPlaying: true,
-
-    tldr: "When two objects have the same frequency weird things can happen.",
+    audioVolumeOverride: 0,
+    tldr: "When two things have the same frequency weird things can happen.",
     children: ({ currentStep }) => (
       <ResonanceSectionWrapper>
         <Paragraph>
@@ -470,6 +479,7 @@ export const steps = {
     ...defaults,
     frequencyOverride: 1,
     isPlaying: false,
+    audioVolumeOverride: 0.7,
     tldr: "Complex sounds are built from stacked simple sine waves.",
     children: (
       <Fragment>
@@ -497,6 +507,7 @@ export const steps = {
     showWaveform: false,
     frequencyOverride: 1,
     isPlaying: false,
+    audioVolumeOverride: 0,
     tldr: "Any line can be broken down into a sum of sine waves.",
     children: (
       <Fragment>
@@ -518,6 +529,7 @@ export const steps = {
     numOfHarmonicsOverride: 1,
     convergenceOverride: 0,
     getMargin: marginFunctions.small,
+    audioVolumeOverride: 0.3,
     tldr: "Wave heights add together mathematically at each point when combined.",
     children: ({ currentStep }) => (
       <Fragment>
@@ -559,6 +571,7 @@ export const steps = {
     isPlaying: false,
     showConvergenceSlider: true,
     getMargin: marginFunctions.small,
+    audioVolumeOverride: 0.3,
     tldr: "Watch two separate waves blend together into one combined shape.",
     children: ({ frequency, amplitude, currentStep }) => (
       <Fragment>
@@ -577,6 +590,7 @@ export const steps = {
     showConvergenceSlider: true,
     isPlaying: false,
     getMargin: marginFunctions.xsmall,
+    audioVolumeOverride: 0.3,
     tldr: "Add more harmonic layers to gradually build complex sound shapes.",
     children: ({ frequency, amplitude, currentStep }) => (
       <Fragment>
@@ -594,6 +608,7 @@ export const steps = {
     showConvergenceSlider: true,
     showNumOfHarmonicsSlider: true,
     getMargin: marginFunctions.xsmall,
+    audioVolumeOverride: 0.3,
     tldr: "More harmonics gradually turn smooth curves into sharp angular edges.",
     children: ({ frequency, amplitude, currentStep }) => (
       <Fragment>
@@ -616,6 +631,7 @@ export const steps = {
     convergenceOverride: 0,
     phaseOverride: 36,
     showConvergenceSlider: true,
+    audioVolumeOverride: 0.3,
     tldr: "Phase equals timing offset.",
     children: ({ frequency, amplitude, currentStep }) => (
       <Fragment>
@@ -651,6 +667,7 @@ export const steps = {
     isPlaying: false,
     showConvergenceSlider: true,
     getMargin: marginFunctions.xsmall,
+    audioVolumeOverride: 0.3,
     tldr: "Precise delays can cancel waves entirely.",
     children: (
       <Fragment>
@@ -672,6 +689,7 @@ export const steps = {
   'sound-decomposition-in-nature': {
     ...defaults,
     isPlaying: true,
+    audioVolumeOverride: 0,
     getMargin: marginFunctions.massive, // Extra space before theme transition
     tldr: "Nature breaks down complex sounds into frequencies using resonance and interference.",
     children: () => (
@@ -695,6 +713,7 @@ export const steps = {
   'waves-beyond-sound': {
     ...defaults,
     isPlaying: true,
+    audioVolumeOverride: 0,
     tldr: "Light, radio, and heat are all waves—just at different frequencies.",
     children: () => (
       <Fragment>
@@ -726,6 +745,7 @@ export const steps = {
     amplitudeOverride: 0.75,
     isPlaying: false,
     getMargin: marginFunctions.small,
+    audioVolumeOverride: 0,
     tldr: "White light contains all colors combined. Separate them to see the spectrum.",
     children: (
       <Fragment>
@@ -758,6 +778,7 @@ export const steps = {
     amplitudeOverride: 0.75,
     isPlaying: false,
     getMargin: marginFunctions.xsmall,
+    audioVolumeOverride: 0,
     tldr: "Rainbows and prisms naturally split white light by frequency.",
     children: () => (
       <Fragment>
@@ -781,6 +802,7 @@ export const steps = {
     amplitudeOverride: 0.75,
     showVolumeControls: false,
     isPlaying: true,
+    audioVolumeOverride: 0,
     getMargin: marginFunctions.xsmall,
     tldr: "Every different sound has its own unique frequency fingerprint.",
     children: ({ frequency, amplitude, currentStep, voicePattern }) => (
