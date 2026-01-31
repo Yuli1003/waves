@@ -546,6 +546,7 @@ class IntroRoute extends PureComponent<Props, State> {
                   stepData={originalStepData}
                   isInverted={isInverted}
                   demoAnimation={true}
+                  currentStep={currentStep}
                 />
               </SlidersRow>
 

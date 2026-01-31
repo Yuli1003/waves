@@ -15,6 +15,7 @@ type Props = {
   isInverted?: boolean,
   demoAnimation?: boolean, // Enable demo animation
   demoDelay?: number, // Delay before demo starts (ms)
+  demoKey?: string, // Optional key for demo tracking; when set, allows re-demo in different contexts (e.g. same slider in different steps)
 };
 
 type State = {
@@ -63,10 +64,11 @@ class Slider extends Component<Props, State> {
   }
 
   startDemo = () => {
-    const { demoDelay = 0, min = 0, max = 1, value = 0, onChange, step = 0.01, label } = this.props;
+    const { demoDelay = 0, min = 0, max = 1, value = 0, onChange, step = 0.01, label, demoKey } = this.props;
+    const trackingKey = demoKey != null ? demoKey : label;
 
-    // Only demo each slider the first time it's seen
-    if (label && demoedSliderLabels.has(label)) {
+    // Only demo each slider the first time it's seen (per tracking key)
+    if (trackingKey && demoedSliderLabels.has(trackingKey)) {
       this.setState({ demoComplete: true });
       return;
     }
@@ -112,7 +114,7 @@ class Slider extends Component<Props, State> {
         } else {
           // Restore original value and mark demo complete
           onChange(this.originalValue);
-          if (label) demoedSliderLabels.add(label);
+          if (trackingKey) demoedSliderLabels.add(trackingKey);
           this.setState({ isPlayingDemo: false, demoComplete: true });
         }
       };

@@ -27,6 +27,7 @@ type Props = {
   stepData: StepData,
   isInverted?: boolean,
   demoAnimation?: boolean, // Enable demo animation for sliders
+  currentStep?: string, // Current intro step ID (used to re-demo sliders in specific steps, e.g. light-decomposition)
 };
 
 const WaveformControls = ({
@@ -46,6 +47,7 @@ const WaveformControls = ({
   stepData,
   isInverted,
   demoAnimation = false,
+  currentStep,
 }: Props) => {
   // Calculate slider width to fill the available space.
   // We have a gap of 10px between potential columns.
@@ -114,6 +116,7 @@ const WaveformControls = ({
             isInverted={isInverted}
             demoAnimation={demoAnimation}
             demoDelay={getSliderDelay()}
+            demoKey={currentStep === 'light-decomposition' ? 'light-decomposition:Convergence' : undefined}
           />
         </Control>
       )}
