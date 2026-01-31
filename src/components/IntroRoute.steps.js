@@ -64,11 +64,8 @@ const StyledVideo = styled.video`
 class ControlledVideo extends Component {
   videoRef = null;
 
-  setVideoRef = (el) => {
-    this.videoRef = el;
-  };
-
   componentDidMount() {
+    this.applyVolume();
     this.updatePlayback();
     // Pause video when page becomes hidden
     document.addEventListener('visibilitychange', this.handleVisibilityChange);
@@ -77,6 +74,16 @@ class ControlledVideo extends Component {
   componentDidUpdate(prevProps) {
     if (prevProps.shouldPlay !== this.props.shouldPlay) {
       this.updatePlayback();
+    }
+    if (prevProps.volume !== this.props.volume) {
+      this.applyVolume();
+    }
+  }
+
+  applyVolume() {
+    const { volume } = this.props;
+    if (this.videoRef && typeof volume === 'number' && volume >= 0 && volume <= 1) {
+      this.videoRef.volume = volume;
     }
   }
 
@@ -111,8 +118,15 @@ class ControlledVideo extends Component {
     }
   };
 
+  setVideoRef = (el) => {
+    this.videoRef = el;
+    if (el && typeof this.props.volume === 'number') {
+      el.volume = this.props.volume;
+    }
+  };
+
   render() {
-    const { src, shouldPlay, ...rest } = this.props;
+    const { src, shouldPlay, volume, ...rest } = this.props;
     return (
       <StyledVideo
         innerRef={this.setVideoRef}
@@ -466,6 +480,7 @@ export const steps = {
           <ControlledVideo
             src={`${process.env.PUBLIC_URL || ''}/examples/Tacoma Bridge Collapse_ The Wobbliest Bridge in the World_ (1940) _ British Pathé new.mp4`}
             shouldPlay={currentStep === 'resonance-frequency'}
+            volume={0.5}
           />
         </VideoWrapper>
         <Caption>
